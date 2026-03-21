@@ -1,7 +1,7 @@
 # Annotated Bibliography, Gap Analysis, and Research Opportunities
 ## Indices, Measurement, and Commensurability
 
-**Date generated:** 2026-03-21 (updated 2026-03-21 with 4 additional papers)
+**Date generated:** 2026-03-21 (updated 2026-03-21 with 8 additional papers; corpus now 29 papers)
 **Companion to:** `INDICES_MEASUREMENT_COMMENSURABILITY_synthesis.md`
 
 ---
@@ -37,6 +37,10 @@
 | 23 | `Saisana-UncertaintySensitivityAnalysis-2005.md` | Saisana, M., Saltelli, A., & Tarantola, S. (2005). Uncertainty and Sensitivity Analysis Techniques as Tools for the Quality Assessment of Composite Indicators. *Journal of the Royal Statistical Society: Series A*, 168(2), 307–323. |
 | 24 | `StiglitzSenFitoussiReport_2009.md` | Stiglitz, J.E., Sen, A., & Fitoussi, J.-P. (2009). *Report by the Commission on the Measurement of Economic Performance and Social Progress*. CMEPSP. |
 | 25 | `nscs.md` | Wolfgang, M.E., Figlio, R.M., Tracy, P.E., & Singer, S.I. (1985). *The National Survey of Crime Severity*. NCJ-96017. Bureau of Justice Statistics. |
+| 26 | `Social Choice and Individual Values -- Kenneth J_ Arrow -- 1963 -- Cowless Foundation...Anna's Archive.md` | Arrow, K.J. (1963 [1951]). *Social Choice and Individual Values* (2nd ed.). Cowles Foundation/Wiley. |
+| 27 | `The Pathological Politics of Criminal Law.md` | Stuntz, W.J. (2001). The Pathological Politics of Criminal Law. *Michigan Law Review*, 100, 505–600. |
+| 28 | `Kleinfeld_Textual Rules in Criminal Statutes_88UCLR1791.md` | Kleinfeld, J. (2019). Textual Rules in Criminal Statutes. *UCLA Law Review*, 88, 1791+. |
+| 29 | `Overcriminalization2.md` | Haugh, T. (2015). Overcriminalization's New Harm Paradigm. *Vanderbilt Law Review*, 68(5). |
 
 ### B. Duplicate Files
 
@@ -57,8 +61,7 @@
 | # | Citation | Why Essential |
 |---|----------|---------------|
 | 1 | Porter, T. (1995). *Trust in Numbers: The Pursuit of Objectivity in Science and Public Life*. Princeton. | The foundational work on why quantification acquires political authority. Cited by Espeland & Stevens, Jerven. Essential for framing the CHI as a political act of commensuration, not just a technical exercise. |
-| 2 | Arrow, K. (1951). *Social Choice and Individual Values*. Wiley. | The impossibility theorem that defines the theoretical limits of aggregation. Sen's Nobel lecture directly addresses it. Foundational for understanding why no "perfect" CHI exists. |
-| 3 | Sellin, T. & Wolfgang, M.E. (1964). *The Measurement of Delinquency*. Wiley. | The foundational seriousness weighting proposal. Cited by virtually every paper in both corpora. |
+| 2 | Sellin, T. & Wolfgang, M.E. (1964). *The Measurement of Delinquency*. Wiley. | The foundational seriousness weighting proposal. Cited by virtually every paper in both corpora. |
 
 ### Tier 2: Important
 
@@ -85,6 +88,7 @@
 | Wolfgang et al. (1985) — National Survey of Crime Severity | #25 | Tier 1 |
 | Saisana, Saltelli & Tarantola (2005) — UA/SA for composite indicators | #23 | Tier 2 |
 | Stiglitz, Sen & Fitoussi (2009) — Measurement of Economic Performance | #24 | Tier 2 |
+| Arrow (1963 [1951]) — Social Choice and Individual Values | #26 | Tier 1 |
 
 ---
 
@@ -92,12 +96,13 @@
 
 | Debate | Camps | Key Citations | Unresolved Question | NYC Angle |
 |--------|-------|--------------|---------------------|-----------|
-| **1. Perceptions vs. sentencing as weight basis** | Perception (Sellin & Wolfgang; Rossi et al.; Wolfgang et al. 1985/NSCS) vs. Sentencing (Sherman et al.) vs. Critical (Parton; Pease et al.) | Sellin & Wolfgang (1964); Wolfgang et al. (1985); Sherman et al. (2016); Parton et al. (1991) | Are perception-based and sentencing-based weights empirically correlated? NSCS provides 204-event benchmark for comparison. | Statutory midpoints avoid the psychometric problems of magnitude estimation while being democratically grounded; compare ratios to NSCS ratios |
+| **1. Perceptions vs. sentencing as weight basis** | Perception (Sellin & Wolfgang; Rossi et al.; Wolfgang et al. 1985/NSCS) vs. Sentencing (Sherman et al.) vs. Critical (Parton; Pease et al.) vs. Legal scholarship (Stuntz 2001; Kleinfeld 2019: statutory text is politically distorted by prosecutor-legislator collusion; sentencing ranges for core offenses are more stable than charging text) | Sellin & Wolfgang (1964); Wolfgang et al. (1985); Sherman et al. (2016); Parton et al. (1991); Stuntz (2001); Kleinfeld (2019) | Are perception-based and sentencing-based weights empirically correlated? NSCS provides 204-event benchmark for comparison. Does political distortion of statutory text undermine sentencing-based weights? | Statutory midpoints avoid the psychometric problems of magnitude estimation while being democratically grounded; compare ratios to NSCS ratios; engage Stuntz/Kleinfeld to argue core-offense ranges are insulated from worst pathologies |
 | **2. Compensability** | Full (all linear CHIs) vs. Limited (OECD Handbook; Munda 2004) vs. None (Espeland & Stevens) | Nardo et al. (2008); Munda (2004); Ravallion (2012); Espeland & Stevens (1998) | Does compensability change block-level targeting decisions? Are weights functioning as trade-off rates or importance coefficients? | Test geometric or non-compensatory (Munda SMCE) aggregation against standard linear CHI |
 | **3. Measurement level** | Ratio-scale (Sherman et al.) vs. Ordinal (Parton et al.; Stevens) vs. Pragmatist (Blumstein) | Stevens (1946); Sherman et al. (2016); Blumstein (1974) | Does the measurement-level question matter operationally if rankings are robust? | Robustness analysis directly answers this |
 | **4. Dark figure** | Realist (total crime) vs. Institutionalist (Biderman & Reiss) vs. Pragmatist (Sherman) | Biderman & Reiss (1967); Maguire (2007); Sherman et al. (2016) | How much does differential reportability affect block-level harm rankings? | Acknowledge that CHI measures reported harm; test reportability-adjusted weights |
-| **5. Gaming / Goodhart's Law** | Optimist (CHI improves incentives) vs. Critic (any target will be gamed) | Bevan & Hood (2006); Sherman & Associates (2020); Maguire (2007) | Will CHI-based policing produce gaming effects? | Frame CHI as targeting tool, not accountability metric |
-| **6. Commensurability** | Pragmatic yes (Sen; Sherman; Stiglitz-Sen-Fitoussi) vs. Fundamental no (Espeland & Stevens) vs. Reveal trade-offs (Ravallion; Saltelli; Saisana et al.) | Sen (1999); Stiglitz et al. (2009); Espeland & Stevens (1998); Ravallion (2012); Saisana et al. (2005) | Can qualitatively different harms share a cardinal scale? Present rankings with uncertainty bounds (Saisana). | Make trade-off ratios explicit; cite Sen's partial comparability; present components alongside composite (Stiglitz-Sen-Fitoussi) |
+| **5. Gaming / Goodhart's Law** | Optimist (CHI improves incentives) vs. Critic (any target will be gamed) vs. Legitimacy (Haugh 2015: overcriminalization is criminogenic, reduces law legitimacy; transparent CHI could enhance legitimacy) | Bevan & Hood (2006); Sherman & Associates (2020); Maguire (2007); Haugh (2015) | Will CHI-based policing produce gaming effects? Can transparent harm weighting enhance perceived legitimacy? | Frame CHI as targeting tool, not accountability metric; cite Haugh to argue transparent weighting enhances rather than undermines legitimacy |
+| **6. Commensurability** | Pragmatic yes (Sen; Sherman; Stiglitz-Sen-Fitoussi) vs. Fundamental no (Espeland & Stevens) vs. Reveal trade-offs (Ravallion; Saltelli; Saisana et al.) vs. Formal impossibility (Arrow 1963: no aggregation can satisfy all five fairness conditions simultaneously) | Sen (1999); Stiglitz et al. (2009); Espeland & Stevens (1998); Ravallion (2012); Saisana et al. (2005); Arrow (1963) | Can qualitatively different harms share a cardinal scale? Present rankings with uncertainty bounds (Saisana). Arrow's impossibility theorem provides the formal foundation for why no "perfect" aggregation exists. | Make trade-off ratios explicit; cite Sen's partial comparability as a response to Arrow; present components alongside composite (Stiglitz-Sen-Fitoussi) |
+| **7. Legitimacy of the legislative weight source** | Legal scholars (Stuntz 2001; Kleinfeld 2019; Haugh 2015: the legislative process that produces statutory weights is pathological — overbroad, prosecutor-driven, criminogenic) vs. CHI pragmatists (Sherman et al.: sentencing ranges are democratically enacted expressions of harm judgment) | Stuntz (2001); Kleinfeld (2019); Haugh (2015); Sherman et al. (2016) | Are statutory sentencing ranges a legitimate basis for harm weights given the pathological politics of criminal law? | Sentencing ranges for core offenses (murder, rape, robbery, assault, burglary) are relatively stable democratic expressions of harm judgment, insulated from the worst pathologies of peripheral-crime proliferation; the CHI uses only 10 target offenses, all core |
 
 ---
 
@@ -157,6 +162,15 @@
 
 **What I could do:** Write a literature review section (or standalone review paper) that traces the full lineage from 1831 to the present, connecting the CHI to the measurement science, social choice, and commensurability traditions. This would be a significant intellectual contribution that reframes the CHI as the latest chapter in a century-long effort.
 
+### Opportunity 7: Engage with the Legal Scholarship on Overcriminalization
+**Priority: MEDIUM-HIGH**
+
+**Gap:** No CHI paper acknowledges that its weight source (statutory sentencing) comes from a politically pathological legislative process. Stuntz (2001) shows that criminal law expands via prosecutor-legislator collusion, producing overbroad statutes and enabling selective enforcement. Kleinfeld (2019) demonstrates that criminal statutes are instrumental law designed for plea bargaining, not textual constraint. Haugh (2015) argues that overcriminalization is itself criminogenic, reducing law legitimacy.
+
+**My data:** A CHI built on NYS Penal Law statutory midpoints for 10 core target offenses.
+
+**What I could do:** Be the first CHI paper to engage with the legal scholarship on overcriminalization. Argue that sentencing ranges for core offenses (murder, rape, robbery, assault, burglary, grand larceny) are insulated from the worst pathologies Stuntz and Kleinfeld describe: core-offense ranges are relatively stable, democratically enacted, and reflect genuine social judgments of harm severity. The CHI's use of sentencing ranges rather than charging decisions sidesteps the instrumental-text problem. Cite Haugh to argue that transparent, proportionate harm weighting could enhance rather than undermine perceived legitimacy.
+
 ---
 
 ## Part 5 — Recommended Research Priorities
@@ -195,3 +209,10 @@ Publish the embedded trade-off ratios. Acknowledge the dark-figure limitation. O
 Write the review that connects Sellin (1931) → Wilkins (1963) → Biderman & Reiss (1967) → Blumstein (1974) → Sellin & Wolfgang (1964) / Rossi et al. (1974) → Parton et al. (1991) → Sherman et al. (2016) → the modern CHI movement. Integrate the measurement science, social choice, and commensurability traditions.
 
 **Justification:** The CHI literature lacks historical depth. A paper that provides it will be heavily cited by everyone building on the CHI framework.
+
+### Priority 6: Engage with Legal Scholarship on Overcriminalization
+*Cross-references: Opportunity 7*
+
+Acknowledge that statutory sentencing ranges emerge from a politically pathological process (Stuntz, Kleinfeld). Argue that core-offense ranges are insulated from the worst pathologies, and that transparent harm weighting enhances legitimacy (Haugh). This preempts an otherwise devastating critique of the CHI's weight source.
+
+**Justification:** If a legal scholar reads a CHI paper and recognizes that the weight source is never interrogated, the project looks naive. Engaging proactively with Stuntz/Kleinfeld/Haugh turns a vulnerability into a strength and demonstrates interdisciplinary rigor.
