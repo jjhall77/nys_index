@@ -39,6 +39,19 @@ Scripts run in numbered order. The `scripts/` folder contains the current versio
 | `scripts/06-aggregate_CHI_wts.R` | Portable functions: `deduplicate_gun_violence()`, `assign_chi()`, `aggregate_chi()` | Functions for any spatial aggregation |
 | `03_robustness_analysis.R` (root) | Test robustness of block targeting across specs (all vs. outside-only harm, low/mid/high weights, N=200/300/400) | Overlap stats, rank correlations |
 
+### EBC Targeting Analysis Scripts (in `ebc_targeting_choices/scripts/`)
+| Script | Purpose | Key Outputs |
+|--------|---------|-------------|
+| `00_load_data.R` | Load spatial infrastructure, complaint/shooting/SF data, CHI harm key, facility data | All sf objects, parameters |
+| `01_build_block_matrix.R` | Allocate crimes to blocks, identify exclusions, build analysis matrix | `block_matrix`, `exclusion_summary` |
+| `02_model_definitions.R` | Define 9 targeting models (3 families: Gun Violence, Count-Based, CHI) | Model score columns, rankings |
+| `03_exploratory_analysis.R` | EDA: distributions, concentration curves, borough breakdowns | Figures 00–06 |
+| `04_model_comparison.R` | Compare models: capture rates, overlap, hot spot coverage | Figures 07–16 |
+| `05_block_level_stats.R` | Block-level descriptive statistics for top-N blocks | Stats tables |
+| `06_trajectory_analysis.R` | K-means trajectory groups for 7MF at physical blocks (2014–2024) | `17_trajectory_groups.png`, neighborhood zoom maps, `block_trajectory_assignments.csv` |
+
+**Note:** `00_load_data.R` loads NYCHA shapefile from `ebc_targeting_choices/data/NYCHA_developments_public` (not root `data/`). The `chi_harm_key.rds` now has separate fatal (7,300) and non-fatal (5,475) shooting weights.
+
 ### Legacy scripts
 - `scripts/legacy/00_setup_and_data.R` — older setup version
 - `scripts/legacy/penal_law_chi_corrected.R` — earlier CHI table
@@ -128,9 +141,16 @@ Scripts run in numbered order. The `scripts/` folder contains the current versio
 
 ## Documentation
 
+### Academic / Technical (`docs/`)
 - `docs/chi_technical_reference.docx` — Technical reference document
 - `docs/matching_logic (1).svg` — Matching logic diagram
 - `scripts/CHI_Lookup_Table_Complete.md` — Full CHI lookup with NYS Penal Law citations and sentencing framework
+
+### Policy / MOCJ (`policy/`)
+- `policy/NYC_Crime_Harm_Index_Policy_Brief.docx` — Plain-language policy brief (~10 pages, embedded figures, footnoted citations)
+- `policy/NYC_Crime_Harm_Index.pptx` — 11-slide presentation for policymakers (MOCJ-branded, Helvetica Neue, restrained navy palette)
+- `policy/Colors.pdf` — MOCJ color palette reference
+- `policy/Style guide_2021.pdf` — MOCJ 2021 style guide (fonts, logos, colors)
 
 ---
 

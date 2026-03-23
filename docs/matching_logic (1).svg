@@ -1,0 +1,213 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1060" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+  
+  <!-- Background -->
+  <rect width="900" height="1060" fill="#fafafa"/>
+  
+  <!-- Title -->
+  <text x="450" y="36" text-anchor="middle" font-size="18" font-weight="bold" fill="#1a1a1a">CHI Scoring: Complaint–Shooting Deduplication Logic</text>
+  <text x="450" y="56" text-anchor="middle" font-size="11" fill="#777">Match on raw coordinates before block assignment → one CHI score per event</text>
+
+  <!-- ================================================================== -->
+  <!-- ROW 1: Three input streams -->
+  <!-- ================================================================== -->
+  
+  <!-- Complaints box -->
+  <rect x="40" y="85" width="220" height="64" rx="6" fill="#e8e8e8" stroke="#999" stroke-width="1.2"/>
+  <text x="150" y="110" text-anchor="middle" font-size="13" font-weight="bold" fill="#333">COMPLAINTS</text>
+  <text x="150" y="128" text-anchor="middle" font-size="10" fill="#555">All offense categories</text>
+  <text x="150" y="141" text-anchor="middle" font-size="10" fill="#555">ofns_desc × pd_desc</text>
+
+  <!-- Shooting victims box -->
+  <rect x="340" y="85" width="220" height="64" rx="6" fill="#d4e4f7" stroke="#7a9ec2" stroke-width="1.2"/>
+  <text x="450" y="110" text-anchor="middle" font-size="13" font-weight="bold" fill="#333">SHOOTING VICTIMS</text>
+  <text x="450" y="128" text-anchor="middle" font-size="10" fill="#555">Fatal / Non-fatal flag</text>
+  <text x="450" y="141" text-anchor="middle" font-size="10" fill="#555">incident_key + victim_id</text>
+
+  <!-- Shots fired box -->
+  <rect x="640" y="85" width="220" height="64" rx="6" fill="#e8e8e8" stroke="#999" stroke-width="1.2"/>
+  <text x="750" y="110" text-anchor="middle" font-size="13" font-weight="bold" fill="#333">SHOTS FIRED</text>
+  <text x="750" y="128" text-anchor="middle" font-size="10" fill="#555">No victim hit</text>
+  <text x="750" y="141" text-anchor="middle" font-size="10" fill="#555">CPW floor = 3,376</text>
+
+  <!-- Arrows down from inputs -->
+  <line x1="150" y1="149" x2="150" y2="190" stroke="#999" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <line x1="450" y1="149" x2="450" y2="190" stroke="#7a9ec2" stroke-width="1.2" marker-end="url(#arrowBlue)"/>
+  <line x1="750" y1="149" x2="750" y2="695" stroke="#999" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <text x="758" y="400" font-size="9" fill="#999" transform="rotate(90,758,400)">passes through unchanged</text>
+
+  <!-- ================================================================== -->
+  <!-- ROW 2: Split complaints -->
+  <!-- ================================================================== -->
+  
+  <!-- Decision diamond: is complaint a potential gun-violence match? -->
+  <polygon points="150,190 280,235 150,280 20,235" fill="#fff" stroke="#999" stroke-width="1.2"/>
+  <text x="150" y="230" text-anchor="middle" font-size="10" font-weight="bold" fill="#333">Murder or</text>
+  <text x="150" y="243" text-anchor="middle" font-size="10" font-weight="bold" fill="#333">Felony Assault?</text>
+
+  <!-- NO path: non-gun complaints pass through -->
+  <line x1="20" y1="235" x2="-15" y2="235" stroke="#999" stroke-width="0" />
+  <line x1="24" y1="235" x2="0" y2="235" stroke="#4a4" stroke-width="1.2"/>
+  <line x1="0" y1="235" x2="0" y2="695" stroke="#4a4" stroke-width="1.2" marker-end="url(#arrowGreen)"/>
+  <text x="8" y="222" font-size="10" font-weight="bold" fill="#4a4">NO</text>
+  <text x="8" y="400" font-size="9" fill="#4a4" transform="rotate(90,8,400)">score via chi_pd_key, pass through</text>
+
+  <!-- YES path down -->
+  <line x1="150" y1="280" x2="150" y2="320" stroke="#999" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <text x="163" y="297" font-size="10" font-weight="bold" fill="#333">YES</text>
+
+  <!-- ================================================================== -->
+  <!-- ROW 3: Matching step -->
+  <!-- ================================================================== -->
+  
+  <!-- Match box spanning complaints and shootings -->
+  <rect x="80" y="320" width="440" height="70" rx="6" fill="#fff3cd" stroke="#d4a017" stroke-width="1.5"/>
+  <text x="300" y="342" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">MATCH: Complaint ↔ Shooting Victim</text>
+  <text x="300" y="360" text-anchor="middle" font-size="10" fill="#555">Raw XY distance ≤ threshold  AND  time gap ≤ threshold</text>
+  <text x="300" y="375" text-anchor="middle" font-size="10" fill="#555">Fatal → Murder complaints  |  Non-fatal → Felony Assault complaints</text>
+
+  <!-- Shooting arrow into match box -->
+  <line x1="450" y1="190" x2="450" y2="320" stroke="#7a9ec2" stroke-width="1.2" marker-end="url(#arrowBlue)"/>
+
+  <!-- ================================================================== -->
+  <!-- ROW 4: Three match outcomes -->
+  <!-- ================================================================== -->
+  
+  <!-- Arrows out of match box -->
+  <line x1="150" y1="390" x2="150" y2="440" stroke="#999" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <line x1="300" y1="390" x2="300" y2="440" stroke="#999" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <line x1="450" y1="390" x2="450" y2="440" stroke="#999" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+  <!-- Outcome A: Matched pair -->
+  <rect x="195" y="440" width="210" height="80" rx="6" fill="#d4edda" stroke="#5a9a6a" stroke-width="1.2"/>
+  <text x="300" y="462" text-anchor="middle" font-size="11" font-weight="bold" fill="#2d5e3a">MATCHED PAIR</text>
+  <text x="300" y="480" text-anchor="middle" font-size="10" fill="#555">Complaint + Shooting</text>
+  <text x="300" y="494" text-anchor="middle" font-size="10" fill="#555">= same real-world event</text>
+  <text x="300" y="512" text-anchor="middle" font-size="10" font-weight="bold" fill="#2d5e3a">→ DROP complaint</text>
+
+  <!-- Outcome B: Unmatched complaint -->
+  <rect x="45" y="440" width="140" height="80" rx="6" fill="#e8e8e8" stroke="#999" stroke-width="1.2"/>
+  <text x="115" y="462" text-anchor="middle" font-size="11" font-weight="bold" fill="#333">UNMATCHED</text>
+  <text x="115" y="477" text-anchor="middle" font-size="11" font-weight="bold" fill="#333">COMPLAINT</text>
+  <text x="115" y="496" text-anchor="middle" font-size="10" fill="#555">Non-gun murder</text>
+  <text x="115" y="509" text-anchor="middle" font-size="10" fill="#555">(stab, beat, etc.)</text>
+
+  <!-- Outcome C: Unmatched shooting -->
+  <rect x="415" y="440" width="140" height="80" rx="6" fill="#d4e4f7" stroke="#7a9ec2" stroke-width="1.2"/>
+  <text x="485" y="462" text-anchor="middle" font-size="11" font-weight="bold" fill="#2d5074">UNMATCHED</text>
+  <text x="485" y="477" text-anchor="middle" font-size="11" font-weight="bold" fill="#2d5074">SHOOTING</text>
+  <text x="485" y="496" text-anchor="middle" font-size="10" fill="#555">No matching complaint</text>
+  <text x="485" y="509" text-anchor="middle" font-size="10" font-weight="bold" fill="#2d5074">→ ADD to count</text>
+
+  <!-- ================================================================== -->
+  <!-- ROW 5: Scoring -->
+  <!-- ================================================================== -->
+  
+  <!-- Arrows down -->
+  <line x1="300" y1="520" x2="300" y2="570" stroke="#c9302c" stroke-width="1.2"/>
+  <text x="300" y="555" text-anchor="middle" font-size="9" fill="#c9302c">discarded</text>
+  <line x1="300" y1="557" x2="300" y2="563" stroke="#c9302c" stroke-width="1.2"/>
+  <!-- X mark -->
+  <line x1="292" y1="567" x2="308" y2="583" stroke="#c9302c" stroke-width="2.5"/>
+  <line x1="308" y1="567" x2="292" y2="583" stroke="#c9302c" stroke-width="2.5"/>
+
+  <line x1="115" y1="520" x2="115" y2="575" stroke="#999" stroke-width="1.2" marker-end="url(#arrow)"/>
+  <line x1="485" y1="520" x2="485" y2="575" stroke="#7a9ec2" stroke-width="1.2" marker-end="url(#arrowBlue)"/>
+
+  <!-- Scoring boxes -->
+  <rect x="45" y="575" width="140" height="55" rx="6" fill="#fff" stroke="#999" stroke-width="1"/>
+  <text x="115" y="596" text-anchor="middle" font-size="10" font-weight="bold" fill="#333">Score via pd_key</text>
+  <text x="115" y="612" text-anchor="middle" font-size="10" fill="#555">chi_weight from</text>
+  <text x="115" y="624" text-anchor="middle" font-size="10" fill="#555">ofns × pd lookup</text>
+
+  <rect x="415" y="575" width="140" height="55" rx="6" fill="#fff" stroke="#7a9ec2" stroke-width="1"/>
+  <text x="485" y="596" text-anchor="middle" font-size="10" font-weight="bold" fill="#2d5074">Fixed weight</text>
+  <text x="485" y="612" text-anchor="middle" font-size="10" fill="#555">Fatal: 7,300</text>
+  <text x="485" y="624" text-anchor="middle" font-size="10" fill="#555">Non-fatal: 5,475</text>
+
+  <!-- ================================================================== -->
+  <!-- ROW 6: Unified table -->
+  <!-- ================================================================== -->
+  
+  <!-- Arrows into unified table -->
+  <line x1="0" y1="695" x2="0" y2="720" stroke="#4a4" stroke-width="1.2"/>
+  <line x1="0" y1="720" x2="340" y2="720" stroke="#4a4" stroke-width="1.2"/>
+
+  <line x1="115" y1="630" x2="115" y2="720" stroke="#999" stroke-width="1.2"/>
+  <line x1="115" y1="720" x2="340" y2="720" stroke="#999" stroke-width="1.2"/>
+
+  <line x1="485" y1="630" x2="485" y2="720" stroke="#7a9ec2" stroke-width="1.2"/>
+  <line x1="485" y1="720" x2="560" y2="720" stroke="#7a9ec2" stroke-width="1.2"/>
+
+  <line x1="750" y1="695" x2="750" y2="720" stroke="#999" stroke-width="1.2"/>
+  <line x1="750" y1="720" x2="560" y2="720" stroke="#999" stroke-width="1.2"/>
+
+  <!-- Merge dot -->
+  <circle cx="450" cy="720" r="4" fill="#333"/>
+  <line x1="450" y1="724" x2="450" y2="755" stroke="#333" stroke-width="1.5" marker-end="url(#arrowDark)"/>
+
+  <!-- Unified table box -->
+  <rect x="250" y="755" width="400" height="70" rx="8" fill="#333" stroke="#1a1a1a" stroke-width="1.5"/>
+  <text x="450" y="780" text-anchor="middle" font-size="14" font-weight="bold" fill="#fff">UNIFIED EVENT TABLE</text>
+  <text x="450" y="798" text-anchor="middle" font-size="10" fill="#ccc">One row per real-world event × chi_weight</text>
+  <text x="450" y="813" text-anchor="middle" font-size="10" fill="#ccc">source: complaint | shooting | shots_fired</text>
+
+  <!-- Arrow to block assignment -->
+  <line x1="450" y1="825" x2="450" y2="855" stroke="#333" stroke-width="1.5" marker-end="url(#arrowDark)"/>
+
+  <!-- Block assignment box -->
+  <rect x="300" y="855" width="300" height="36" rx="6" fill="#fff" stroke="#999" stroke-width="1"/>
+  <text x="450" y="878" text-anchor="middle" font-size="11" fill="#333">Assign block IDs (grid, census, segment…)</text>
+
+  <!-- Arrow to aggregate -->
+  <line x1="450" y1="891" x2="450" y2="915" stroke="#333" stroke-width="1.5" marker-end="url(#arrowDark)"/>
+
+  <!-- Aggregate box -->
+  <rect x="290" y="915" width="320" height="50" rx="6" fill="#fff" stroke="#333" stroke-width="1.5"/>
+  <text x="450" y="938" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">aggregate_chi(unit = "any_column")</text>
+  <text x="450" y="955" text-anchor="middle" font-size="10" fill="#777">block, precinct, tract, grid, segment…</text>
+
+  <!-- Arrow to output -->
+  <line x1="450" y1="965" x2="450" y2="990" stroke="#333" stroke-width="1.5" marker-end="url(#arrowDark)"/>
+
+  <!-- Output -->
+  <rect x="310" y="990" width="280" height="40" rx="6" fill="#e8e8e8" stroke="#999" stroke-width="1"/>
+  <text x="450" y="1015" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">CHI per areal unit</text>
+
+  <!-- ================================================================== -->
+  <!-- Legend -->
+  <!-- ================================================================== -->
+  <rect x="610" y="440" width="250" height="138" rx="6" fill="#fff" stroke="#ccc" stroke-width="1"/>
+  <text x="625" y="460" font-size="11" font-weight="bold" fill="#333">Legend</text>
+  
+  <rect x="625" y="472" width="12" height="12" fill="#e8e8e8" stroke="#999" stroke-width="0.8"/>
+  <text x="645" y="483" font-size="10" fill="#555">Complaint data</text>
+  
+  <rect x="625" y="492" width="12" height="12" fill="#d4e4f7" stroke="#7a9ec2" stroke-width="0.8"/>
+  <text x="645" y="503" font-size="10" fill="#555">Shooting data</text>
+  
+  <rect x="625" y="512" width="12" height="12" fill="#fff3cd" stroke="#d4a017" stroke-width="0.8"/>
+  <text x="645" y="523" font-size="10" fill="#555">Matching step</text>
+  
+  <rect x="625" y="532" width="12" height="12" fill="#d4edda" stroke="#5a9a6a" stroke-width="0.8"/>
+  <text x="645" y="543" font-size="10" fill="#555">Matched → complaint dropped</text>
+
+  <line x1="625" y1="558" x2="637" y2="570" stroke="#c9302c" stroke-width="2"/>
+  <line x1="637" y1="558" x2="625" y2="570" stroke="#c9302c" stroke-width="2"/>
+  <text x="645" y="568" font-size="10" fill="#555">Discarded (duplicate)</text>
+  
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="none" stroke="#999" stroke-width="1"/>
+    </marker>
+    <marker id="arrowBlue" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="none" stroke="#7a9ec2" stroke-width="1"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="none" stroke="#4a4" stroke-width="1"/>
+    </marker>
+    <marker id="arrowDark" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="none" stroke="#333" stroke-width="1.2"/>
+    </marker>
+  </defs>
+</svg>

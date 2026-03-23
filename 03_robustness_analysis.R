@@ -364,10 +364,10 @@ cat("\nCALCULATING CHI SCORES UNDER DIFFERENT SPECIFICATIONS...\n")
 block_matrix <- block_matrix %>%
   mutate(
     chi_all_mid = 
-      murder_all * 5086 +
-      robbery_all * 3081 +
+      murder_all * 5483 +
+      robbery_all * 3144 +
       felony_assault_all * 1991 +
-      misd_assault_all * 231 +
+      misd_assault_all * 178 +
       shootings * 5475 +
       shots_fired * 3380
   )
@@ -376,10 +376,10 @@ block_matrix <- block_matrix %>%
 block_matrix <- block_matrix %>%
   mutate(
     chi_outdoor_mid = 
-      murder_outdoor * 5086 +
-      robbery_outdoor * 3081 +
+      murder_outdoor * 5483 +
+      robbery_outdoor * 3144 +
       felony_assault_outdoor * 1991 +
-      misd_assault_outdoor * 231 +
+      misd_assault_outdoor * 178 +
       shootings * 5475 +
       shots_fired * 3380
   )
@@ -388,9 +388,9 @@ block_matrix <- block_matrix %>%
 block_matrix <- block_matrix %>%
   mutate(
     chi_all_extreme_low = 
-      murder_all * 1000 +
+      murder_all * 5475 +
       robbery_all * 1004 +
-      felony_assault_all * 183 +
+      felony_assault_all * 1004 +
       misd_assault_all * 91 +
       shootings * 5475 +
       shots_fired * 3380
@@ -403,7 +403,7 @@ block_matrix <- block_matrix %>%
       murder_all * 7300 +
       robbery_all * 5475 +
       felony_assault_all * 5475 +
-      misd_assault_all * 1643 +
+      misd_assault_all * 183 +
       shootings * 5475 +
       shots_fired * 3380
   )
@@ -412,10 +412,10 @@ block_matrix <- block_matrix %>%
 block_matrix <- block_matrix %>%
   mutate(
     chi_all_low_10pct = 
-      murder_all * (5086 * 0.9) +
-      robbery_all * (3081 * 0.9) +
+      murder_all * (5483 * 0.9) +
+      robbery_all * (3144 * 0.9) +
       felony_assault_all * (1991 * 0.9) +
-      misd_assault_all * (231 * 0.9) +
+      misd_assault_all * (178 * 0.9) +
       shootings * 5475 +
       shots_fired * 3380
   )
@@ -424,10 +424,10 @@ block_matrix <- block_matrix %>%
 block_matrix <- block_matrix %>%
   mutate(
     chi_all_high_10pct = 
-      murder_all * (5086 * 1.1) +
-      robbery_all * (3081 * 1.1) +
+      murder_all * (5483 * 1.1) +
+      robbery_all * (3144 * 1.1) +
       felony_assault_all * (1991 * 1.1) +
-      misd_assault_all * (231 * 1.1) +
+      misd_assault_all * (178 * 1.1) +
       shootings * 5475 +
       shots_fired * 3380
   )
@@ -436,8 +436,8 @@ block_matrix <- block_matrix %>%
 block_matrix <- block_matrix %>%
   mutate(
     chi_felony_only_mid = 
-      murder_all * 5086 +
-      robbery_all * 3081 +
+      murder_all * 5483 +
+      robbery_all * 3144 +
       felony_assault_all * 1991 +
       # NO misd_assault
       shootings * 5475 +
@@ -448,8 +448,8 @@ block_matrix <- block_matrix %>%
 block_matrix <- block_matrix %>%
   mutate(
     chi_felony_outdoor_mid = 
-      murder_outdoor * 5086 +
-      robbery_outdoor * 3081 +
+      murder_outdoor * 5483 +
+      robbery_outdoor * 3144 +
       felony_assault_outdoor * 1991 +
       # NO misd_assault
       shootings * 5475 +
@@ -460,9 +460,9 @@ block_matrix <- block_matrix %>%
 block_matrix <- block_matrix %>%
   mutate(
     chi_felony_extreme_low = 
-      murder_all * 1000 +
+      murder_all * 5475 +
       robbery_all * 1004 +
-      felony_assault_all * 183 +
+      felony_assault_all * 1004 +
       shootings * 5475 +
       shots_fired * 3380
   )
