@@ -1,0 +1,260 @@
+Notes:
+1. check accuracy of charge tables
+2. Check to see if 01,02,03 work
+3. Ensure charge stuff is accurate
+4. Add gun violence--> new logic should apply to the shots fireds
+5. Apply upstream to model selection and randomization peiuce
+
+
+
+
+
+
+
+Below is a **hard audit** of your reference, keyed to the *current* statutory text as published on the New York State Senate open legislation site, plus NY courts’ model-jury-instruction notes where they flag post‑9/1/2024 Article 130 changes. I’m going to be blunt and specific.
+
+---
+
+## 1) Core methodology problems (your framework will mis-weight lots of offenses)
+
+### A) “Non‑violent felonies (PL 70.00) – indeterminate sentences” table is not a lawful “range”
+
+Your non‑violent table lists fixed “sentencing ranges” like **B: 1–9**, **C: 1–5.5**, etc. **That is not how PL 70.00 indeterminate sentencing is structured.**
+
+Under PL 70.00, the court fixes:
+
+* a **maximum term** capped by class (**B ≤ 25, C ≤ 15, D ≤ 7, E ≤ 4**) and
+* a **minimum period** that is **≥ 1 year** and **≤ one‑third of the maximum term imposed** (for non‑A felonies). ([NYSenate.gov][1])
+
+So you *cannot* truthfully present PL 70.00 non‑violent felony exposure as a single clean “1–X years” range without stating a **specific assumption** (e.g., “assume court always sets maximum at the statutory cap, then minimum ranges 1 to 1/3 of that cap”).
+
+Also: PL 70.00 explicitly calls out that it is “except as provided … or section 70.80” (felony sex offense sentencing), so sex offenses break your violent/nonviolent shortcut anyway. ([NYSenate.gov][1])
+
+**Impact:** Your CHI weights for *all* non‑violent felonies (larcenies, stolen property, burglary 3rd, etc.) are not anchored to an actual PL 70.00 “sentencing range” unless you add and defend assumptions.
+
+---
+
+### B) You’re missing PL 70.80 (felony sex offenses) — it breaks your “violent list controls ranges” claim
+
+You wrote:
+
+> “Only offenses explicitly enumerated in PL 70.02(1) receive violent felony sentencing ranges.”
+
+That’s **incomplete** for sentencing exposure because **PL 70.80 requires determinate sentencing for most felony sex offenses**, and its determinate ranges mirror the violent ranges by class (B: 5–25; C: 3.5–15; D: 2–7; E: 1.5–4), **even if the offense is not a PL 70.02 ‘violent felony offense.’** ([NYSenate.gov][2])
+
+PL 70.80 also states that **“violent felony sex offenses”** (sex offenses that *are* PL 70.02 violent felonies) get sentenced under PL 70.02. ([NYSenate.gov][2])
+
+**Impact:** Your “violent vs non‑violent” flag is not a reliable proxy for **determinate vs indeterminate** sentencing, especially across sex offenses.
+
+---
+
+### C) Your “A‑I felonies” table misstates murder 1st, and your A‑II CHI is plainly wrong
+
+PL 70.00 sets:
+
+* **Murder 1st (125.27)** minimum period: **20–25 years** (not 20–40). ([NYSenate.gov][1])
+* The **20–40** minimum period you used is for **attempted murder 1st / attempted aggravated murder** (not murder 1st). ([NYSenate.gov][1])
+* **Predatory Sexual Assault / Child (A‑II)** minimum period: **10–25 years**. ([NYSenate.gov][1])
+
+Your A‑II line is internally inconsistent:
+
+* you state midpoint **17.5 years**, but
+* you set CHI to **7,300 days** (≈ 20 years).
+
+That’s not rounding; it’s a different number.
+
+---
+
+## 2) Violent felony designation errors (several are flat wrong under PL 70.02(1))
+
+PL 70.02(1) is indeed a **statutory enumerated list**. ([NYSenate.gov][3])
+But your mapping to that list is wrong in multiple places:
+
+### Wrongly marked “violent felony offense” in your tables
+
+These do **not** appear in the PL 70.02(1) enumerations you’re relying on:
+
+* **Robbery 3rd (160.05)** — PL 70.02 enumerates **Robbery 1st (160.15)** and **Robbery 2nd (160.10)**, but not 160.05. ([NYSenate.gov][3])
+* **Menacing 1st (120.13)** — PL 70.02 lists **Menacing a police officer/peace officer (120.18)** as a class D violent felony offense; it does not enumerate 120.13. ([NYSenate.gov][3])
+* **Reckless Endangerment 1st (120.25)** — not enumerated in PL 70.02(1)’s class D list. ([NYSenate.gov][3])
+* **Vehicular Manslaughter 1st (125.13)** — PL 70.02 includes other homicide-related felonies (e.g., 125.22 in special sentencing; and class C violent includes 125.11/125.21), but not 125.13. ([NYSenate.gov][3])
+* **Vehicular Assault 1st (120.04)** and **Aggravated Vehicular Assault (120.04‑a)** — not enumerated in PL 70.02(1). ([NYSenate.gov][3])
+* **Aggravated Assault upon a person <11 / 65+ (120.12)** — not enumerated in PL 70.02(1). ([NYSenate.gov][3])
+* **Rape 3rd (130.25)** — not enumerated as a PL 70.02 violent felony offense. ([NYSenate.gov][3])
+  *Important nuance:* It may still be a **felony sex offense** for PL 70.80 determinate sentencing purposes, which is a different concept. ([NYSenate.gov][2])
+
+### Offenses you cite to the wrong PL 70.02(1) letter bucket
+
+You repeatedly cite “70.02(1)(d)” for **class D violent felonies**. But under PL 70.02(1), the lettering is:
+
+* (a) = class B violent,
+* (b) = class C violent,
+* (c) = class D violent,
+* (d) = class E violent. ([NYSenate.gov][3])
+
+So (example) **Rape 2nd (130.30)** belongs under **70.02(1)(c)**, not (d). ([NYSenate.gov][3])
+
+---
+
+## 3) Statute/labeling errors (section numbers & degrees are wrong in multiple tables)
+
+These are not “judgment calls” — they’re just mismatches.
+
+### A) Article 140: your “trespass degrees” are off by one, and 140.17 is not what you say it is
+
+Actual structure:
+
+* **140.10 = Criminal Trespass 3rd (class B misdemeanor)** ([NYSenate.gov][4])
+* **140.15 = Criminal Trespass 2nd (class A misdemeanor)** ([NYSenate.gov][5])
+* **140.17 = Criminal Trespass 1st** (and it exists as that; Article 140’s section list shows it) ([NYSenate.gov][6])
+* **140.05 = Trespass** (not “Criminal Trespass 3rd”) ([NYSenate.gov][6])
+
+But your table says:
+
+* 140.15 = “Criminal Trespass 1st” (wrong),
+* 140.10 = “Criminal Trespass 2nd” (wrong),
+* 140.05 = “Criminal Trespass 3rd” (wrong),
+* 140.17 = “Aggravated Criminal Trespass” (not the section title you’re treating it as), and you also classify it as an **E felony**, which is not how your own table treats trespass classes.
+
+**This section needs a full rewrite.**
+
+---
+
+### B) Article 165: Unauthorized Use of a Vehicle and CPSP are scrambled
+
+From the statute:
+
+* **165.05 = Unauthorized Use of a Vehicle 3rd (class A misdemeanor)** ([NYSenate.gov][7])
+* **165.06 = Unauthorized Use of a Vehicle 2nd (class E felony)** ([NYSenate.gov][8])
+* **165.08 = Unauthorized Use of a Vehicle 1st (class D felony)** ([NYSenate.gov][9])
+* Article 165’s own index shows this sequence (165.05, 165.06, 165.08). ([NYSenate.gov][10])
+* **165.50 is “Criminal Possession of Stolen Property in the third degree”** (it appears in the navigation around 165.52 as that offense). ([NYSenate.gov][11])
+
+But your table says:
+
+* “Unauthorized Use MV 1st” = **165.50** (wrong section — that’s CPSP 3rd),
+* “Unauthorized Use MV 2nd” = **165.05** (wrong degree — 165.05 is 3rd),
+* “Unauthorized Use MV 3rd” = **165.08** (wrong degree — 165.08 is 1st).
+
+Again: **this needs a full rewrite**, not spot edits.
+
+---
+
+### C) Other internal “Code vs PL Section” mismatches
+
+A few clear examples:
+
+* Hazing rows: you swapped your “Code” labels — **120.16 is Hazing 1st** and **120.17 is Hazing 2nd**. ([NYSenate.gov][12])
+* Your “Menacing 1st” row lists Code “PL 12015” while PL Section is 120.13 — that’s a self-contradiction (120.15 is a different section entirely).
+
+These errors will break any automated join/lookup by code.
+
+---
+
+## 4) Post‑9/1/2024 sex-offense statute changes: your “Criminal Sexual Act” rows are likely obsolete as *current* charges
+
+NY courts’ CJI notes state that, effective **September 1, 2024**, statutes defining “criminal sexual act” were repealed and their substance moved into the rape statutes. ([New York State Unified Court System][13])
+
+Your document (dated Feb 2026) still treats **“Criminal Sexual Act 1st/2nd/3rd”** as live sections (130.50 / 130.45 / 130.40). At minimum you need to:
+
+* mark them as **“former / repealed (effective 9/1/2024)”** if your dataset includes historical charges, or
+* remove them as current offense codes if your dataset is post‑9/1/2024.
+
+---
+
+## 5) CHI arithmetic & conversion errors (plus special sentencing ranges you missed)
+
+### A) Your “C violent” CHI days is wrong
+
+You list:
+
+* C violent midpoint = 9.25 years, CHI = **3,380 days**
+
+But 9.25 × 365 = **3,376.25** → **3,376 days** (if rounding to nearest whole day). Your other rows look like you’re rounding .5 up, so 3,376 is the consistent value.
+
+### B) You missed special violent-felony sentencing ranges in PL 70.02(3)
+
+You apply one generic range per class. But PL 70.02(3) sets **special minimum/maximum terms for certain offenses**, including ones you list:
+
+* For **Aggravated Assault upon a Police/Peace Officer (120.11)**, the determinate term is **10–30 years** (not the generic 5–25 for class B violent). ([NYSenate.gov][3])
+  → midpoint 20 years → CHI **7,300 days**
+
+* For **Menacing a Police Officer/Peace Officer (120.18)**, the determinate term is **2–8 years** (not generic 2–7 for class D violent). ([NYSenate.gov][3])
+  → midpoint 5 years → CHI **1,825 days**
+
+If you’re trying to be statute-tight, you must apply these special-case ranges.
+
+### C) Your A‑I murder 1st CHI is based on the wrong range
+
+Murder 1st min period is **20–25** (not 20–40). ([NYSenate.gov][1])
+If you’re using midpoint of the *minimum period*:
+
+* midpoint = 22.5 years → **8,213 days** (365-day year, .5 rounds up)
+
+### D) Misdemeanor max is 364 days (not 365)
+
+PL 70.15 sets max for an A misdemeanor at **364 days**. ([NYSenate.gov][14])
+So midpoint of 0–364 is **182 days**, not 183.
+
+### E) Violations: you used 15 days as if it were a midpoint
+
+Violations have a max of **15 days**. ([NYSenate.gov][14])
+If your CHI rule is “midpoint of range,” midpoint is **7.5 days** → **8** (rounded), not 15.
+
+---
+
+## 6) A concrete “fix list” (what I would change immediately)
+
+### Must-fix (factual/statutory)
+
+1. Replace your “Non‑violent felony sentencing ranges” table with either:
+
+   * a statement of PL 70.00’s **max caps + min rule**, or
+   * an explicitly labeled assumption (e.g., “assume max term set at cap; compute min range 1 to cap/3”). ([NYSenate.gov][1])
+2. Add PL 70.80 rules for felony sex offenses; stop using “violent list only” logic for sex-offense determinacy. ([NYSenate.gov][2])
+3. Correct murder 1st min period basis (20–25) and fix the A‑II predatory CHI mismatch. ([NYSenate.gov][1])
+4. Fix the violent-felony mislabels: robbery 3rd, menacing 1st, reckless endangerment 1st, vehicular manslaughter 1st, vehicular assault 1st, aggravated vehicular assault, 120.12, rape 3rd (as “violent felony offense”). ([NYSenate.gov][3])
+5. Rewrite Article 140 and Article 165 tables (they contain multiple wrong degrees/sections). ([NYSenate.gov][6])
+6. Update sex-offense statute references to reflect post‑9/1/2024 changes (or mark “former” explicitly). ([New York State Unified Court System][13])
+
+### Should-fix (precision / avoids silent drift)
+
+7. Fix CHI arithmetic for C violent (3,376 days) and standardize your rounding rule in writing.
+8. Incorporate PL 70.02 special-case ranges for 120.11 and 120.18 (and any other special cases you include later). ([NYSenate.gov][3])
+9. Add a note that both PL 70.00 and PL 70.02 contain **scheduled changes effective September 1, 2027** (you already date this Feb 2026; it’s relevant for forward-looking “exposure” charts). ([NYSenate.gov][1])
+
+---
+
+## 7) If you want the cleanest “CHI-ready” structure
+
+Given how many exceptions exist, the most defensible pipeline is:
+
+1. **Identify which sentencing scheme applies** (in this order):
+
+* PL 70.80 (felony sex offense determinate), if applicable ([NYSenate.gov][2])
+* PL 70.02 (violent felony offense determinate), if applicable ([NYSenate.gov][3])
+* Otherwise PL 70.00 (indeterminate) with explicitly stated assumptions ([NYSenate.gov][1])
+* PL 70.15 for misdemeanors/violations ([NYSenate.gov][14])
+
+2. **Apply special-case ranges** where the statute gives them (e.g., 120.11, 120.18). ([NYSenate.gov][3])
+
+3. **Compute midpoint → days** with one declared convention (365-day year, midpoint rounding rule, how you treat “life”).
+
+---
+
+If you paste (a) the **full offense list you’re actually weighting** (including any subsections like 120.60(1)), and (b) what your dataset records for sex offenses post‑9/1/2024, I can give you a **corrected classification table + corrected CHI column** in the same format you used—without changing your overall style, just making it statute-tight.
+
+[1]: https://www.nysenate.gov/legislation/laws/PEN/70.00 "https://www.nysenate.gov/legislation/laws/PEN/70.00"
+[2]: https://www.nysenate.gov/legislation/laws/PEN/70.80 "NYS Open Legislation | NYSenate.gov"
+[3]: https://www.nysenate.gov/legislation/laws/PEN/70.02 "https://www.nysenate.gov/legislation/laws/PEN/70.02"
+[4]: https://www.nysenate.gov/legislation/laws/PEN/140.10 "https://www.nysenate.gov/legislation/laws/PEN/140.10"
+[5]: https://www.nysenate.gov/legislation/laws/PEN/140.15 "https://www.nysenate.gov/legislation/laws/PEN/140.15"
+[6]: https://www.nysenate.gov/legislation/laws/PEN/P3TIA140 "https://www.nysenate.gov/legislation/laws/PEN/P3TIA140"
+[7]: https://www.nysenate.gov/legislation/laws/PEN/165.05 "https://www.nysenate.gov/legislation/laws/PEN/165.05"
+[8]: https://www.nysenate.gov/legislation/laws/PEN/165.06 "https://www.nysenate.gov/legislation/laws/PEN/165.06"
+[9]: https://www.nysenate.gov/legislation/laws/PEN/165.08 "https://www.nysenate.gov/legislation/laws/PEN/165.08"
+[10]: https://www.nysenate.gov/legislation/laws/PEN/P3TJA165 "https://www.nysenate.gov/legislation/laws/PEN/P3TJA165"
+[11]: https://www.nysenate.gov/legislation/laws/PEN/165.52 "https://www.nysenate.gov/legislation/laws/PEN/165.52"
+[12]: https://www.nysenate.gov/legislation/laws/PEN/120.16 "https://www.nysenate.gov/legislation/laws/PEN/120.16"
+[13]: https://www.nycourts.gov/judges/cji/2-PenalLaw/130_post_9-1-24/1-REV_Art130hp.shtml?utm_source=chatgpt.com "CJI2d[NY] PENAL LAW ARTICLE 130"
+[14]: https://www.nysenate.gov/legislation/laws/PEN/70.15 "NYS Open Legislation | NYSenate.gov"

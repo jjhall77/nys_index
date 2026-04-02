@@ -6,3 +6,8 @@
 
 data/
 output/
+
+# Large files
+*.csv
+*.pdf
+*.DS_Store
